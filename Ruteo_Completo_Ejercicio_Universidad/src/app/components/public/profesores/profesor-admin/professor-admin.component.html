@@ -1,0 +1,99 @@
+<div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/home']">Inicio</a></li>
+      <li class="breadcrumb-item">
+        <a href="javascript: history.go(-1)">Profesores</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Administrar</li>
+    </ol>
+  </nav>
+</div>
+
+
+<div class="row justify-content-md-center">
+  <div class="col-md-4 text-left" style="padding: 5px">
+    <small
+      ><b>{{ amountTotalRecords }}</b> encontradas en
+      <b>{{ amountTotalPages }}</b> paginas</small
+    >
+  </div>
+  <div class="col-md-7 text-right" style="padding: 5px">
+    <small>
+      <pagination-controls
+        id="paginationProfessor"
+        (pageChange)="actualPage = $event"
+        [maxSize]="10"
+        [directionLinks]="true"
+        previousLabel="Anterior"
+        nextLabel="Siguiente"
+      ></pagination-controls>
+    </small>
+  </div>
+</div>
+
+
+<div class="row justify-content-md-center">
+  <table class="table table-hover col-md-11">
+    <thead class="thead-dark">
+      <tr>
+        <th>Codigo</th>
+        <th>Documento</th>
+        <th>Nombre</th>
+        <th>Imagen</th>
+        <th>&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr
+        *ngFor="
+          let objProf of arrayProfessors
+            | paginate
+              : {
+                  id: 'paginationProfessor',
+                  itemsPerPage: amountShowRecords,
+                  currentPage: actualPage,
+                  totalItems: amountTotalRecords
+                };
+          let i = index
+        "
+      >
+        <th scope="row">{{ objProf.cod }}</th>
+        <td>{{ objProf.document }}</td>
+        <td>{{ objProf.nameProfessor }}</td>
+        <td>{{ objProf.photo }}</td>
+        <td>
+          <a (click)="abrirModalBorrar(modalEliminarConfirmar, objProf)" style="cursor: pointer; color: red;">
+            <i class="far fa-trash-alt"></i
+          ></a>
+          &nbsp;
+          <a [routerLink]="['/profesor/editar', objProf.cod]">
+            <i class="far fa-edit"></i>
+          </a>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #modalEliminarConfirmar>
+  <div class="modal-header">
+    <h4 class="modal-title pull-left">{{ modalTitulo }}</h4>
+    <button
+      type="button"
+      class="close pull-right"
+      aria-label="Close"
+      (click)="modalRefbtn()"
+    >
+      <span aria-hidden="true">&times;</span>
+    </button>
+  </div>
+  <div class="modal-body">
+    {{ modalTexto }}<br /><strong>{{ modalContenido }}</strong>
+  </div>
+  <div class="modal-footer">
+    <button type="button" class="btn btn-danger" (click)="btnEliminar()">
+      Eliminar
+    </button>
+  </div>
+</ng-template>

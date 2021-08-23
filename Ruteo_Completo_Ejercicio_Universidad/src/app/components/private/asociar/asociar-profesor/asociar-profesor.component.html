@@ -1,0 +1,62 @@
+<div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/home']">Inicio</a></li>
+      <li class="breadcrumb-item">
+        <a href="javascript:void(0)">Universidades</a>
+      </li>
+      <li class="breadcrumb-item active" aria-current="page">Asociar</li>
+    </ol>
+  </nav>
+</div>
+
+<section class="container">
+  <div class="row">
+    <div class="col-md-12 pt-5">
+      <div class="card">
+        <div class="card-body">
+          <h5 class="text-center">Asociar un profesor a una universidad</h5>
+          <form>
+            <div class="row mt-2">
+
+              <div class="form-group col-md-6 select">
+                <label for="inputState">Seleccione el docente</label>
+                <select id="inputState" class="form-control ">
+                  <option
+                    *ngFor="let objPro of arrayProfessors"
+                    (click)="seleccionarProfesor(objPro)"
+                  >
+                    {{ objPro.nameProfessor }}
+                  </option>
+                </select>
+              </div>
+              <div class="form-group col-md-6 select">
+                <label for="inputState">Seleccione la universidad</label>
+                <select id="inputState" class="form-control ">
+                  <option
+                    *ngFor="let objUni of arrayUniversities"
+                    (click)="seleccionarUniversidad(objUni)"
+                  >
+                    {{ objUni.nameUniversity }}
+                  </option>
+                </select>
+              </div>
+
+            </div>
+
+            <div class="form-group mx-auto col-sm-4">
+              <button
+                class="btn btn-block btn-primary button"
+                type="submit"
+                style="border-radius: 0.25rem"
+                (click)="asociar(objUniversity, objProfessor)"
+              >
+                Asociar
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

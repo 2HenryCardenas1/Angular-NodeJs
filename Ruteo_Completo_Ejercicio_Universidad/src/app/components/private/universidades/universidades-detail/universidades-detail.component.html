@@ -1,0 +1,97 @@
+<div class="container">
+  <div *ngIf="amountProfessors > 0; then showData; else emptyMessage"></div>
+</div>
+
+<ng-template #showData>
+  <div class="row border mx-1">
+    <div class="col-md-8 my-2">
+      <table class="table table-bordered table-sm table-hover">
+        <thead>
+          <tr>
+            <th style="width: 5%">Nro</th>
+            <th style="width: 40%">Docente</th>
+            <th style="width: 35%">Universidad</th>
+            <th style="width: 20%">Foto del docente</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr
+            *ngFor="let objUniP of arrayUniversitiesProfessors; let i = index"
+            (click)="selectUniversityProfessor(objUniP)"
+            [class.table-secondary]="objUniP == selectedUniversityProfessor"
+          >
+            <td>{{ i + 1 }}</td>
+            <td>{{ objUniP.codProfessor.nameProfessor }}</td>
+            <td>{{objUniP.codUniversity.nameUniversity}}</td>
+            <td>{{ objUniP.codProfessor.photo }}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="col-md-4 my-2">
+      <div
+        *ngIf="selectedUniversityProfessor.codProfessor.cod"
+        class="bg-light"
+      >
+        <div class="row">
+          <label class="col-sm-3 text-success"
+            ><small>Universidad</small></label
+          >
+          <div class="col-sm-8">
+            {{ selectedUniversityProfessor.codUniversity.nameUniversity }}
+          </div>
+        </div>
+
+        <div class="row">
+          <label class="col-sm-3 text-success"><small>Logo</small></label>
+          <div class="col-sm-8">
+            {{ selectedUniversityProfessor.codUniversity.logo }}
+          </div>
+        </div>
+
+        <div class="text-left">
+          <img
+            class="img-thumbnail"
+            style="width: 200px; height: 100%"
+            alt="No encuentro la imagen"
+            [src]="selectedUniversityProfessor.codUniversity.logoBase64"
+            onerror="this.src='../assets/img/withoutPhoto.png'"
+          />
+        </div>
+
+        <div class="row mt-2">
+          <label class="col-sm-3 text-success"><small>Documento</small></label>
+          <div class="col-sm-8">
+            {{ selectedUniversityProfessor.codProfessor.document }}
+          </div>
+        </div>
+
+        <div class="row">
+          <label class="col-sm-3 text-success"><small>Profesor</small></label>
+          <div class="col-sm-8">
+            {{ selectedUniversityProfessor.codProfessor.nameProfessor }}
+          </div>
+        </div>
+
+        <div class="text-left">
+          <img
+            class="img-thumbnail"
+            style="width: 200px; height: 100%"
+            alt="No encuentro la imagen"
+            [src]="selectedUniversityProfessor.codProfessor.photoBase64"
+            onerror="this.src='../assets/img/withoutPhoto.png'"
+          />
+        </div>
+      </div>
+    </div>
+  </div>
+</ng-template>
+
+<ng-template #emptyMessage>
+  <div class="row border justify-content-md-center">
+    <div class="alert alert-danger mt-3">
+      No hay profesores para esta universidad
+    </div>
+  </div>
+</ng-template>

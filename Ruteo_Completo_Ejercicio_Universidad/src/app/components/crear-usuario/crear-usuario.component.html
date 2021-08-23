@@ -1,0 +1,139 @@
+<section class="container">
+  <div class="row pt-5">
+    <div class="col-sm-6 mx-auto">
+      <div class="card shadow-lg">
+        <div class="card-header">
+          <div class="d-flex align-items-center">
+            <h5 class="mx-auto w-100">Crear usuario</h5>
+            <i class="fa fa-key" style="font-size: 17px"></i>
+          </div>
+        </div>
+        <div class="card-body">
+          <form
+            #frmCrear="ngForm"
+            (ngSubmit)="frmCrear.form.valid && crearUsu(frmCrear)"
+            novalidate
+          >
+            <div class="form-group mx-auto">
+              <div class="col-sm-12">
+                <input
+                  style="border-radius: 3rem"
+                  class="form-control"
+                  id="usu"
+                  name="usu"
+                  type="text"
+                  [(ngModel)]="objUsuario.correo"
+                  #usu="ngModel"
+                  placeholder="Correo electronico"
+                  [ngClass]="{
+                    'is-invalid': frmCrear.submitted && usu.invalid
+                  }"
+                  required
+                  minlength="5"
+                  [pattern]="patronCorreo"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="frmCrear.submitted && usu.invalid"
+                >
+                  <span *ngIf="usu?.errors?.required">
+                    Email de usuario requerido</span
+                  >
+                  <span *ngIf="usu?.errors?.pattern">
+                    Debe ingresar un correo válido</span
+                  >
+                </div>
+              </div>
+
+              <div class="col-sm-12 mt-4">
+                <input
+                  style="border-radius: 3rem"
+                  class="form-control"
+                  type="password"
+                  name="con"
+                  id="con"
+                  placeholder="Contraseña"
+                  [(ngModel)]="objUsuario.clave"
+                  #con="ngModel"
+                  [ngClass]="{
+                    'is-invalid': frmCrear.submitted && con.invalid
+                  }"
+                  required
+                  minlength="5"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="frmCrear.submitted && con.invalid"
+                >
+                  <span *ngIf="con?.errors?.required"
+                    >Contraseña requerido</span
+                  >
+                  <span *ngIf="con?.errors?.minlength"
+                    >La contraseña debe tener mínimo 5 caracteres</span
+                  >
+                </div>
+              </div>
+
+              <div class="col-sm-12 mt-4">
+                <input
+                  style="border-radius: 3rem"
+                  class="form-control"
+                  type="password"
+                  name="recon"
+                  id="recon"
+                  placeholder="Confirmar Contraseña"
+                  [(ngModel)]="objUsuario.reclave"
+                  #recon="ngModel"
+                  [ngClass]="{
+                    'is-invalid': frmCrear.submitted && recon.invalid
+                  }"
+                  required
+                  pattern="{{ objUsuario.clave }}"
+                />
+                <div
+                  class="invalid-feedback"
+                  *ngIf="frmCrear.submitted && recon.invalid"
+                >
+                  <span *ngIf="recon?.errors?.required"
+                    >Confirmar Contraseña campo requerido</span
+                  >
+                  <span *ngIf="recon?.errors?.pattern"
+                    >No coinciden las contraseña</span
+                  >
+                </div>
+              </div>
+            </div>
+
+            <div class="form-group mx-auto col-sm-12">
+              <button
+                class="btn btn-block btn-dark"
+                type="submit"
+                style="border-radius: 3rem"
+              >
+                Crear Cuenta
+              </button>
+              <a
+                class="btn btn-block btn-danger"
+                style="border-radius: 3rem"
+                [routerLink]="['/home']"
+                >Regresar</a
+              >
+              <div class="dropdown-divider"></div>
+              <div class="text-center mb-2">
+                <small>
+                  <strong>Inicia Sesion</strong>, si ya tienes una cuenta
+                </small>
+              </div>
+              <a
+                class="btn btn-block btn-success"
+                style="border-radius: 3rem"
+                [routerLink]="['/login']"
+                >Iniciar sesion</a
+              >
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

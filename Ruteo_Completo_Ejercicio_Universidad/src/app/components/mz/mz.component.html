@@ -1,0 +1,19 @@
+<div>
+  <app-top-menu></app-top-menu>
+</div>
+<div>
+  <p align="center">{{ objUsuarioSesion.correo }}</p>
+  <p align="center">{{ objUsuarioSesion.codusuario }}</p>
+</div>
+
+
+<div>
+
+  <a
+  class="btn btn-block btn-danger"
+  style="border-radius: 3rem"
+  (click)="autenticacionService.salir()"
+  [routerLink]="['/home']"
+  >Salir</a
+>
+</div>

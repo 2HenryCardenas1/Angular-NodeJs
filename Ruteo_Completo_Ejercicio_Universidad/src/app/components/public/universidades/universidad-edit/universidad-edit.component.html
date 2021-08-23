@@ -1,0 +1,116 @@
+<div>
+  <nav aria-label="breadcrumb">
+    <ol class="breadcrumb">
+      <li class="breadcrumb-item"><a [routerLink]="['/home']">Inicio</a></li>
+      <li class="breadcrumb-item">
+        <a href="javascript:void(0)">Universidades</a>
+      </li>
+      <li class="breadcrumb-item">
+        <a [routerLink]="['/universidad/admin']">Administrar</a>
+      </li>
+      <li class="breadcrumb-item" aria-current="page">Editar</li>
+    </ol>
+  </nav>
+</div>
+
+<div class="row justify-content-md-center">
+  <div class="col-md-10">
+    <div class="card">
+      <h5 class="card-header bg-dark text-white dark-background">
+        Editar Universidad
+      </h5>
+      <div class="card-body">
+        <form
+          #formEdit="ngForm"
+          (ngSubmit)="formEdit.form.valid && sendInfo(formEdit)"
+          novalidate
+        >
+          <div class="form-group">
+            <label for="nameUniversity">Nombre de la universidad:</label>
+            <input
+              type="text"
+              class="form-control"
+              id="nameUni"
+              name="nameUni"
+              [(ngModel)]="objUniversity.nameUniversity"
+              #nameUni="ngModel"
+              [ngClass]="{
+                'is-invalid': formEdit.submitted && nameUni.invalid
+              }"
+              required
+              minlength="5"
+            />
+            <div
+              class="invalid-feedback"
+              *ngIf="formEdit.submitted && nameUni.invalid"
+            >
+              <span *ngIf="nameUni?.errors?.required"
+                >El nombre de la universidad es requerido</span
+              >
+              <span *ngIf="nameUni?.errors?.minlength"
+                >Minimo 5 caracteres</span
+              >
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label for="photoPro">Imagen de la universidad: </label>
+            <div class="input-group">
+              <input
+                class="form-control form-control-sm"
+                type="text"
+                id="photoPro"
+                name="photoPro"
+                [(ngModel)]="objUniversity.logo"
+                #photoPro="ngModel"
+                [ngClass]="{
+                  'is-invalid': formEdit.submitted && photoPro.invalid
+                }"
+                required
+                accept="image/x-png, image/jpeg, image/gif"
+              />
+              <button
+                class="btn btn-outline-info btn-sm"
+                type="button"
+                (click)="fileInput.click()"
+              >
+                <span>+</span>
+                <input
+                  type="file"
+                  (change)="selectedPhoto($event)"
+                  style="display: none"
+                  #fileInput
+                />
+              </button>
+            </div>
+            <div
+              class="invalid-feedback"
+              *ngIf="formEdit.submitted && photoPro.invalid"
+            >
+              <span *ngIf="photoPro?.errors?.required"
+                >La imagen de la universidad es requerida
+              </span>
+            </div>
+          </div>
+
+          
+          <div class="text-left">
+            <img
+              [src]="objUniversity.logoBase64"
+              alt="Image not Found"
+              onerror="this.src='../assets/img/withoutPhoto.png'"
+              class="img-thumbnail"
+              style="width: 300px; height: 100%"
+            />
+          </div>
+
+          <div class="text-right">
+            <button class="btn btn-outline-dark text-right" type="submit">
+              Actualizar Universidad
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

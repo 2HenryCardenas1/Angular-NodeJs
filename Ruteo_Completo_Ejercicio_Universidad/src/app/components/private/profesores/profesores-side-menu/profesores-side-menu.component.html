@@ -1,0 +1,27 @@
+<nav id="side-menu">
+  <div class="list-group">
+    <a
+      class="list-group-item list-group-item-action list-group-item-dark"
+      style="padding-bottom: 7px; padding-top: 7px"
+      [routerLink]="['/externa/profesores/profesores-detail', 0]"
+      routerLinkActive="active"
+    >
+    Profesores
+    </a>
+    <small>
+      <a
+        *ngFor="let objProfessor of arrayProfessors; let i = index"
+        class="list-group-item list-group-item-action"
+        style="padding-bottom: 5px; padding-top: 5px"
+        [routerLink]="[
+          '/externa/profesores/profesores-detail',
+          objProfessor.cod
+        ]"
+        [class.list-group-item-info]="objProfessor == objSelectedProfessor"
+        (click)="seleccionarProfesor(objProfessor)"
+      >
+        {{ i + 1 }}. {{ objProfessor.nameProfessor }}
+      </a>
+    </small>
+  </div>
+</nav>

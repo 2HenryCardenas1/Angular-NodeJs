@@ -1,0 +1,105 @@
+Plugins ATOM 
+
+atom-beautify 
+Atom-File-Icons 
+atom-typescript 
+goto-definition
+linter 
+linter-ui-default 3.3.1 e instalar dependencias(intentions & busy-signal)
+platformio-ide-terminal 2.10.1 (Ojo que se putea y toca desintalar y volverla instalar)
+
+-----inicio de proyectos---------------
+
+npm i -g typescript
+
+npm init --yes => crear un jeason
+
+
+----------------Librerias-----------------
+
+----------Obligatorio------------------
+
+npm i express morgan cors promise-mysql 
+
+npm i express morgan cors pg-promise
+---------------------------------------
+
+---Manejo de errores mysql---
+
+npm i --save mysql-error-codes
+npm i postgres-error-codes
+
+-----Modo desarrollo----
+npm i nodemon -D
+------------------------
+
+----Creacion de token-------
+	  (obligatorio)
+	  
+npm i jsonwebtoken
+---------------------------
+
+------creacion scripst ts de libreria---
+
+npm i --save @types/jsonwebtoken
+npm i --save @types/morgan -D
+npm i --save @types/cors -D
+npm i --save @types/express
+
+------------------------------------------
+
+-----generar el archivo tsconfig.json-----
+				(obligatorio)
+				
+tsc --init
+
+cambiar :
+
+  "target": "es6", 
+  "outDir": "./build", 
+------------------------------------------
+
+--------Creacion archivos-----------
+
+crear folder src
+				crear index.ts	
+						import cors from 'cors';
+						import morgan from 'morgan';
+						import express from 'express';
+
+crear folder 
+-config
+-controllers
+-public
+	-public/img
+-routes	
+
+
+
+
+------------------------------------------------------
+
+
+------------------Package.json--------------------------------
+
+"scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "tsc -w", =>para leer si hay errores cada vez que se hagan cambios (tranpilacion)
+    "dev": "nodemon build/index.js"
+  },
+
+--------------------Ejecutar -------------------------
+
+npm run <nombre de script>
+npm run dev
+------------------------------------------------------
+
+
+------------------------------------------------------
+
+expres = servidor 
+morgan = 
+cores => control de cabeceras
+promise-mysql 
+
+pwd user_fullstack : 123

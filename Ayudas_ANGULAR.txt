@@ -1,0 +1,112 @@
+ng serve
+npm --version
+ng version
+
+//crear archivo
+ng new xxx
+
+//iniciar server
+ng serve
+
+//Librerias
+
+npm i @popperjs/core 
+npm i --save  jquery
+npm i --save popper.js
+npm i --save angular-popper
+npm i --save bootstrap
+npm i --save @fortawesome/fontawesome-free
+
+//instalar todas las librerias 
+npm i --save @popperjs/core  jquery popper.js angular-popper bootstrap @fortawesome/fontawesome-free ngx-bootstrap ngx-toastr ngx-pagination ngx-bootstrap ngx-toastr
+
+
+npm i --save ngx-pagination
+npm i --save ngx-bootstrap
+npm i --save ngx-toastr
+
+ng g s : generar servicio
+
+para encodear:
+
+npm i js-sha512
+
+desencodear 
+
+npm i jet-decode
+
+
+guardian 
+
+ng g guard nombre : evitar intrusos
+
+//Crear componentes
+
+ng g c nombre
+
+//IMPORTAR LIBRERIAS
+"styles": [
+              "node_modules/bootstrap/dist/css/bootstrap.css",
+              "node_modules/@fortawesome/fontawesome-free/css/all.css",
+              "node_modules/ngx-toastr/toastr.css",
+              "src/styles.css"
+            ],
+            "scripts": [
+              "./node_modules/jquery/dist/jquery.js",
+              "./node_modules/@popperjs/core/dist/umd/popper.js",
+              "./node_modules/bootstrap/dist/js/bootstrap.js"
+
+            ]
+            
+
+//metodo : void {}(void es para no retornar )			
+ 
+ 
+ 
+//app.module
+ import {FormsModule} from '@angular/forms'
+ 
+ 
+//carpeta mocks
+ independisa todo lo de la data(backend)
+ 
+//mooks=archivos de prueba
+
+
+app.nodules.ts
+
+--- MODULE ----
+
+import { FormsModule } from '@angular/forms';
+
+import { ToastrModule } from 'ngx-toastr';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { NgxPaginationModule } from 'ngx-pagination';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
+imports: [
+    FormsModule,
+    ToastrModule.forRoot(),
+    ModalModule.forRoot(),
+    BrowserAnimationsModule,
+    NgxPaginationModule,
+	AppRoutingModule
+  ],
+
+ --crear pipes--
+ 
+ ng g p nombre
+ 
+ --crear modelos--
+ 
+ ng g cl nombre 
+ 
+ 
+--Ruteo--
+poner ruta por defecto
+{path:'',redirectTo:'/inicio',pathMatch:'full'} 
+ruta no encontrada  
+  {path:'**',component:NoEncontradoComponent}
+poner ruta por defecto
+{path:'',redirectTo:'/inicio',pathMatch:'full'}   
+  
