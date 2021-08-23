@@ -1,17 +1,12 @@
-# Encontrar la IP de una pagina web :globe_with_meridians: :snake:
+# Angular-NodeJs
 
-## Instrucciones
+Este es un repositorio desarrollado en la asignatura fullstack con el fin de poner en practica los conocimientos enseñados en este curso.
 
-1) Clona el repositorio : git clone https://github.com/2HenryCardenas1/DiscoverIpWebSite.git
-2) Ejecuta el script de la sigente forma
-    
-    **Si estas en Linux**
-    
-    python3 webIp.py www.pagina.com
-    
-   **Si estas en windows:**
+## Sobre que trata el proyecto :
+
+``` 
+1) Es una pagina web en la cual se podra crear, eliminar y actualizar la informacion de un docente, 
+   asi mismo se puede asociar un profesor a una universidad o viserversa.
    
-    python webIp.py www.pagina.com
-    
-3) No ingresar la direccion web con el http o https de la pagina
-4) No ingresar directorios de la pagina,es decir : www.pagina.com/una/cosa
+2) Se uso angular para el frontend y nodejs para el backend.
+``` 
